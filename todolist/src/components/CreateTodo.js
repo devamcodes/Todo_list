@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 // import DatePicker from "react-datepicker";
 // import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate, Navigate } from "react-router-dom";
+import Stack from "@mui/material/Stack";
 
 const theme = createTheme();
 
@@ -34,13 +35,26 @@ export default function SignUp() {
     Arr = [...todos];
     createTodo.id = Arr.length;
     Arr.push(createTodo);
-    setTodos(Arr);
-    console.log(`createTodo`, createTodo);
-    navigate("/");
-    <Navigate to="/" />;
+    if (createTodo.title.length) {
+      if (createTodo.startDate.length) {
+        if (createTodo.endDate.length) {
+          setTodos(Arr);
+          console.log(`createTodo`, createTodo);
+          navigate("/");
+          <Navigate to="/" />;
+        } else {
+          alert("Enter Valid End Date");
+        }
+      } else {
+        alert("Enter some valid Start Date");
+      }
+    } else {
+      alert("Enter some valid title");
+    }
   };
   const newtodo = (event) => {
     const { name, value } = event.target;
+
     setCreateTodo((prevState) => ({
       ...prevState,
       [name]: value,
@@ -57,7 +71,11 @@ export default function SignUp() {
             flexDirection: "column",
             alignItems: "center",
           }}
-          style={{ border: "2px solid black" }}
+          style={{
+            border: "2px solid black",
+            borderRadius: "6px",
+            boxShadow: " inset 0px 0px 3px 2px grey",
+          }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <PlaylistAddIcon />
@@ -80,14 +98,16 @@ export default function SignUp() {
                 }}
               >
                 <div>
-                  <Typography minWidth="fit-content">Start Date:</Typography>
-                  {/* <DatePicker */}
-                  <TextField
-                    label="Satrt Date"
-                    selected={createTodo.startDate}
-                    name="startDate"
-                    onChange={newtodo}
-                  />
+                  <Stack direction="row" spacing={2}>
+                    <Typography minWidth="fit-content">Start Date:</Typography>
+                    {/* <DatePicker */}
+                    <TextField
+                      label="Satrt Date"
+                      selected={createTodo.startDate}
+                      name="startDate"
+                      onChange={newtodo}
+                    />
+                  </Stack>
                 </div>
               </Grid>
               <Grid
@@ -98,14 +118,16 @@ export default function SignUp() {
                 }}
               >
                 <div>
-                  <Typography minWidth="fit-content">End Date:</Typography>
-                  {/* <DatePicker */}
-                  <TextField
-                    label="End Date"
-                    selected={createTodo.endDate}
-                    name="endDate"
-                    onChange={newtodo}
-                  />
+                  <Stack direction="row" spacing={2}>
+                    <Typography minWidth="fit-content">End Date:</Typography>
+                    {/* <DatePicker */}
+                    <TextField
+                      label="End Date"
+                      selected={createTodo.endDate}
+                      name="endDate"
+                      onChange={newtodo}
+                    />
+                  </Stack>
                 </div>
               </Grid>
               <Grid item xs={12}>
