@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -13,10 +13,7 @@ import { useNavigate, Navigate } from "react-router-dom";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
-// import ListItem from "@mui/material/ListItem";
-// import ListItemText from "@mui/material/ListItemText";
 import Chip from "@mui/material/Chip";
-// import { fontSize } from "@mui/system";
 const drawerWidth = "240px";
 
 let arr2 = [];
@@ -41,7 +38,9 @@ function TodoList() {
 
   const taskComplete = (i) => {
     let markedDoneTodo = todos.map((tasks) => {
-      return tasks.id === i ? { ...tasks, isDone: !tasks.isDone } : { ...tasks };
+      return tasks.id === i
+        ? { ...tasks, isDone: !tasks.isDone }
+        : { ...tasks };
     });
 
     setTodos(markedDoneTodo);
@@ -103,7 +102,7 @@ function TodoList() {
                       Tasks Completed:
                       {isDone ? todos.length - todos.isDone.count() : 0}
                     </h3>
-                    //<ListItemText primary={index} /> 
+                    <ListItemText primary={index} /> 
                   </ListItem>;
                 })
               : null}
