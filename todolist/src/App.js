@@ -18,8 +18,8 @@ function App() {
       <TodoContext.Provider value={{ todos, setTodos }}>
         <Router>
           <Routes>
-            <Route path="/" exact element={<TodoList />} />
-            <Route path="/create-todo" exact element={<CreateTodo />} />
+            <Route path="/" element={<TodoList />} />
+            <Route path="/create-todo" element={<CreateTodo />} />
           </Routes>
         </Router>
       </TodoContext.Provider>
