@@ -24,6 +24,7 @@ export default function SignUp() {
   const [createTodo, setCreateTodo] = useState({
     id: "",
     title: "",
+    description:"",
     startDate: "",
     endDate: "",
     isDone: false,
@@ -130,16 +131,27 @@ export default function SignUp() {
                   </Stack>
                 </div>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={11} style={{margin:"10px 20px"}}>
                 <TextField
                   required
-                  fullWidth
+                fullWidth
                   id="title"
                   label="Task Title"
-                  name="title"
+                name="title"
+                // color="black"
                   onChange={newtodo}
                   autoComplete="title"
                   style={{ zIndex: 0 }}
+                />
+                <TextField
+                  required
+                  fullWidth
+                  id="description"
+                  label="Task Description"
+                  name="description"
+                  onChange={newtodo}
+                  autoComplete="title"
+                  style={{ zIndex: 0, marginTop:"10px"}}
                 />
               </Grid>
             </Grid>
