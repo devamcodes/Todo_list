@@ -14,6 +14,7 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
+import EditIcon from '@mui/icons-material/Edit';
 const drawerWidth = "240px";
 
 let arr2 = [];
@@ -77,8 +78,8 @@ function TodoList() {
             Total Todos:
             <Chip
               label={todos.length}
-              style={{ marginLeft: "20px" }}
-              color="primary"
+              style={{backgroundColor:"grey", marginLeft: "20px", color:"#fff" }}
+              
             />
           </List>
           <Divider />
@@ -113,7 +114,7 @@ function TodoList() {
       <Box padding="10px 30px" marginLeft={drawerWidth}>
         <Button
           variant="contained"
-          color="success"
+          color="primary"
           style={{ float: "right" }}
           onClick={btnClick}
         >
@@ -129,18 +130,19 @@ function TodoList() {
               <TableCell>Operations</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {todos.map(({ id, isDone, title, startDate, endDate }, key) => {
+          <TableBody style={{backgroundColor:"#FCEFAE"}}>
+            {todos.map(({ id, isDone, title,description, startDate, endDate }, key) => {
               return (
                 <TableRow key={key}>
                   <TableCell>{id + 1}</TableCell>
-                  <TableCell>{title}</TableCell>
+                  <TableCell><TableRow><h2>{title}</h2><h5>{description}</h5></TableRow></TableCell>
                   <TableCell>{startDate}</TableCell>
                   <TableCell>{endDate}</TableCell>
                   <TableCell>
                     <Button
                       variant="contained"
                       style={{ marginRight: "10px" }}
+                      color="success"
                       startIcon={<DoneAllOutlinedIcon />}
                       onClick={() => taskComplete(id)}
                       disabled={isDone}
@@ -149,13 +151,15 @@ function TodoList() {
                     </Button>
                     <Button
                       variant="contained"
-                      color="error"
+                      // color="error"
+                      style={{backgroundColor:"#F70218"}}
                       onClick={(event) => ondelete(event, id)}
                       startIcon={<DeleteIcon />}
                     >
                       Delete
                     </Button>
                   </TableCell>
+                  <TableCell><Button style={{backgroundColor:"#fff", borderRadius:"50%"}}><EditIcon/></Button></TableCell>
                 </TableRow>
               );
             })}
