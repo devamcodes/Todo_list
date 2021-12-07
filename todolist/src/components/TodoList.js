@@ -52,10 +52,16 @@ const styles = makeStyles(() => ({
     borderRadius: "50%",
     boxShadow: "2px 1px black",
     color: "black",
-    fontWeight: "bold",
+    fontWeight: "600",
     float: "right",
-    // backgroundColor: "#2CDD67",
-    "&:hover": { backgroundColor: "#DD2C57", boxShadow: "3px 2px black" },
+    backgroundColor: "#0f5ff0",
+    padding: "10px 15px",
+    border: "1px",
+    "&:hover": {
+      backgroundColor: "#DD2C57",
+      boxShadow: "3px 2px black",
+      cursor: "pointer",
+    },
   },
   edit: {
     backgroundColor: "#fff",
@@ -143,13 +149,9 @@ function TodoList() {
       </Drawer>
       ;
       <Box padding="10px 30px" marginLeft={drawerWidth}>
-        <Button
-          variant="contained"
-          className={classes.button}
-          onClick={btnClick}
-        >
-          New
-        </Button>
+        <button className={classes.button} onClick={btnClick}>
+          NEW
+        </button>
         <Table size="small">
           <TableHead>
             <TableRow>
@@ -188,14 +190,14 @@ function TodoList() {
                         {id + 1}
                       </TableCell>
                       <TableCell style={{ width: "50ch", fontWeight: 600 }}>
-                        <TableRow>
+                        <TableCell>
                           <span style={{ fontFamily: "lucida console" }}>
                             {title}
                           </span>
                           <p style={{ fontFamily: "courier new" }}>
                             {description}
                           </p>
-                        </TableRow>
+                        </TableCell>
                       </TableCell>
                       <TableCell style={{ width: "10ch", fontWeight: 600 }}>
                         {startDate}
